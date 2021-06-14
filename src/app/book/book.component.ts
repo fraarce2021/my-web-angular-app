@@ -1,4 +1,6 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from "@angular/core";
+import { BooksService } from "../services/books.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-book',
@@ -7,5 +9,16 @@ import { Component, Input } from "@angular/core";
 })
 
 export class BookComponent{
-  @Input() bookTitle: string|undefined;
+  @Input() bookTitle: string = "";
+  @Output() bookClicked = new EventEmitter();
+
+constructor(private bookService:BooksService) {
+
+}
+
+  onClicked(){
+    // this.bookClicked.emit();
+    this.bookService.deleteBooks(this.bookTitle);
+  }
+
 }

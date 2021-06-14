@@ -7,6 +7,9 @@ import { UserComponent } from './user.component';
 import { FormsModule } from '@angular/forms';
 import { BooksComponent } from './books/books.component';
 import { BookComponent } from './book/book.component';
+import { BooksService } from './services/books.service';
+import { HomeComponent } from './home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -15,14 +18,16 @@ import { BookComponent } from './book/book.component';
     AppComponent,
     UserComponent,
     BooksComponent,
-    BookComponent
+    BookComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
