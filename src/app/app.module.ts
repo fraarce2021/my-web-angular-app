@@ -10,8 +10,10 @@ import { BookComponent } from './book/book.component';
 import { BooksService } from './services/books.service';
 import { HomeComponent } from './home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { MaterialModule } from './material.module';
+import { LoginComponent } from './security/login/login.component';
+import { RegisterComponent } from './security/register/register.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserComponent,
     BooksComponent,
     BookComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [BooksService],
   bootstrap: [AppComponent]
