@@ -1,15 +1,36 @@
 <section>
-    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="registerUser(f)">
+    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="registerUser(f)" fxLayoutGap="10px">
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput placeholder="Example First Name" ngModel name="firstName" required>
+            <mat-error>First name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput placeholder="Example Last Name" ngModel name="lastName" required>
+            <mat-error>Last name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>User Name</mat-label>
+            <input type="text" matInput placeholder="Example User Name" ngModel name="userName" required>
+            <mat-error>User name is required</mat-error>
+        </mat-form-field>
+
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="email@mail.com" ngModel name="email">
+            <input type="email" matInput placeholder="email@mail.com" ngModel name="email" email required #emailInput="ngModel">
+            <mat-error *ngIf="emailInput.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field hintLabel="The password must have a minimum of 7 characters">
             <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="password" ngModel name="password">
+            <input type="password" matInput placeholder="password" ngModel name="password" required minlength="7">
+            <mat-error>Password requires 7 characters</mat-error>
         </mat-form-field>
 
-        <button type="submit" mat-raised-button color="primary">Register</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Register</button>
     </form>
 </section>
