@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="onMenuToggleDispatch()" fxHide.gt-xs>
+  <mat-icon>menu</mat-icon>
+  </button>
+    <span>Book Market</span>
+    <div fxFlex fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout="row" fxLayoutGap="10px" class="nav-menu">
+            <li>
+                <a routerLink="/">Home</a>
+            </li>
+            <li>
+                <a routerLink="/register">Register</a>
+            </li>
+            <li>
+                <a routerLink="/login">Login</a>
+            </li>
+        </ul>
+    </div>
+</mat-toolbar>

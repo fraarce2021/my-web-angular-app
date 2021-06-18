@@ -14,6 +14,8 @@ import { MaterialModule } from './material.module';
 import { LoginComponent } from './security/login/login.component';
 import { RegisterComponent } from './security/register/register.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ToolbarComponent } from './navigation/toolbar/toolbar.component';
+import { ListMenuComponent } from './navigation/list-menu/list-menu.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BookComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ToolbarComponent,
+    ListMenuComponent
   ],
   imports: [
     BrowserModule,
