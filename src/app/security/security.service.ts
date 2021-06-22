@@ -50,4 +50,8 @@ export class SecurityService{
   getUser(){
     return {...this.user}
   }
+
+  onSession(){
+    return this.user != null;
+  }
 }

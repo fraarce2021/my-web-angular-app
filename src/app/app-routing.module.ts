@@ -4,9 +4,10 @@ import { HomeComponent } from './home.component';
 import { BooksComponent } from './books/books.component';
 import { LoginComponent } from './security/login/login.component';
 import { RegisterComponent } from './security/register/register.component';
+import { SecurityRouter } from './security/security.router';
 
 const routes: Routes = [
-  {path:'', component: HomeComponent},
+  {path:'', component: HomeComponent, canActivate: [SecurityRouter]},
   {path:'books', component: BooksComponent},
   {path:'login', component: LoginComponent},
   {path:'register', component: RegisterComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [SecurityRouter]
 })
 export class AppRoutingModule { }
