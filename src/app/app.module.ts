@@ -14,6 +14,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToolbarComponent } from './navigation/toolbar/toolbar.component';
 import { ListMenuComponent } from './navigation/list-menu/list-menu.component';
 import { SecurityService } from './security/security.service';
+import { BooksComponent } from './books/books.component';
+import { BooksService } from './books/books.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { SecurityService } from './security/security.service';
     LoginComponent,
     RegisterComponent,
     ToolbarComponent,
-    ListMenuComponent
+    ListMenuComponent,
+    BooksComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { SecurityService } from './security/security.service';
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [SecurityService ],
+  providers: [SecurityService, BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
