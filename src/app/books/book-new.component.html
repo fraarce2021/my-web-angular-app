@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Add New book</h2>
+<mat-dialog-content>
+    <section fxLayoutAlign="center" style="margin-top: 10px; margin-bottom: 10px;">
+        <mat-card fxFlex="100%">
+            <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="saveBook(f)">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Title</mat-label>
+                    <input type="text" matInput placeholder="example: One Piece" name="title" ngModel required>
+                    <mat-error>Title is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Description</mat-label>
+                    <input type="text" matInput placeholder="example: Manga about..." name="description" ngModel required>
+                    <mat-error>Description is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Price</mat-label>
+                    <input type="text" matInput placeholder="example: 2000" name="price" ngModel required>
+                    <mat-error>Price is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Author</mat-label>
+                    <mat-select [(ngModel)]="selectAuthor" name="author" required>
+                        <mat-option value="1">Francisco Arce</mat-option>
+                        <mat-option value="2">Oda</mat-option>
+                        <mat-option value="1">Monkey D Luffy</mat-option>
+                    </mat-select>
+                    <mat-error>Author is required</mat-error>
+                </mat-form-field>
+
+            </form>
+        </mat-card>
+    </section>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="true">Close</button>
+    <button mat-button color="primary">Save</button>
+</mat-dialog-actions>
