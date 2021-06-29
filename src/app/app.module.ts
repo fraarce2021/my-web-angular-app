@@ -17,6 +17,9 @@ import { SecurityService } from './security/security.service';
 import { BooksComponent } from './books/books.component';
 import { BooksService } from './books/books.service';
 import { BookNewComponent } from './books/book-new.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { AuthorsComponent } from './authors/authors.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { BookNewComponent } from './books/book-new.component';
     ToolbarComponent,
     ListMenuComponent,
     BooksComponent,
-    BookNewComponent
+    BookNewComponent,
+    AuthorsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +40,10 @@ import { BookNewComponent } from './books/book-new.component';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
-  providers: [SecurityService, BooksService],
+  providers: [SecurityService, BooksService, {provide: MAT_DATE_LOCALE, useValue: 'es-ES'}],
   bootstrap: [AppComponent],
   entryComponents: [BookNewComponent]
 })
