@@ -1,9 +1,9 @@
 <div fxLayoutAlign="center center">
     <mat-form-field fxFlex="60%">
-        <input matInput type="text" placeholder="Filter" (keyup)="doFilter($event.target)">
+        <input matInput type="text" placeholder="Filter" (keyup)="doFilter($event)">
     </mat-form-field>
 </div>
-<mat-table [dataSource]="dataSource" matSort>s
+<mat-table [dataSource]="dataSource" matSort (matSortChange)="orderColumn($event)">
     <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.title}}</mat-cell>
@@ -14,7 +14,7 @@
     </ng-container>
     <ng-container matColumnDef="author">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{element.author}}</mat-cell>
+        <mat-cell *matCellDef="let element">{{element.author.fullName}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="price">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
@@ -24,7 +24,7 @@
     <mat-row *matRowDef="let row, columns: loadColumns"></mat-row>
 </mat-table>
 
-<mat-paginator [pageSize]="2" [pageSizeOptions]="[1,5,10,20]">
+<mat-paginator (page)="eventPaginator($event)" #pagination [pageSize]="booksPerPage" [pageSizeOptions]="pageFilterSize" [length]="totalBook">
 </mat-paginator>
 
 <button mat-fab id="btnAdd" color="warn" (click)="openDialog()">

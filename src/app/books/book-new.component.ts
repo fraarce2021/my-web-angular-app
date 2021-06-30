@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatOption } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
@@ -7,29 +7,32 @@ import { BooksService } from './books.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Author } from '../authors/authors.model';
 import { AuthorsService } from '../authors/authors.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-book-new',
     templateUrl: 'book-new.component.html'
 })
 
-export class BookNewComponent implements OnInit{
+export class BookNewComponent implements OnInit, OnDestroy{
   selectAuthor: string;
   selectAuthorText: string;
   releaseDate: string;
   @ViewChild(MatDatepicker) picker : MatDatepicker<Date>;
   authors: Author[] = [];
 
+  authorSuscription : Subscription;
+
   constructor(private booksService : BooksService, private dialogRef : MatDialog, private authorsService: AuthorsService){
 
   }
 
   ngOnInit(){
-    // this.authorsService.getAuthors();
-    // this.authorsService.getAuthorListener()
-    // .subscribe((authors: Author[])=>{
-    //   this.authors = authors;
-    // });
+    this.authorsService.getAuthors();
+    this.authorSuscription = this.authorsService.getAuthorListener()
+    .subscribe((authors: Author[])=>{
+      this.authors = authors;
+    });
   }
 
   authorSelected(event: MatSelectChange){
@@ -40,17 +43,30 @@ export class BookNewComponent implements OnInit{
 
     if(form.valid){
 
-      this.booksService.saveBook({
-        bookId: 1,
+      const authorRequest = {
+        id: this.selectAuthor,
+        fullName: this.selectAuthorText
+      }
+
+      const bookRequest = {
+        id: "",
         description: form.value.description,
         title: form.value.title,
-        author: this.selectAuthorText,
-        price: form.value.price,
+        author: authorRequest,
+        price: parseInt(form.value.price),
         releaseDate: new Date(this.releaseDate)
-      });
-      this.dialogRef.closeAll();
-    }
+      }
 
+      this.booksService.saveBook(bookRequest);
+      this.authorSuscription = this.booksService.saveBookListener()
+      .subscribe(()=>{
+        this.dialogRef.closeAll();
+      });
+    }
   }
+
+ngOnDestroy(){
+  this.authorSuscription.unsubscribe();
+}
 
 }

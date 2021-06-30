@@ -15,7 +15,6 @@ import { ToolbarComponent } from './navigation/toolbar/toolbar.component';
 import { ListMenuComponent } from './navigation/list-menu/list-menu.component';
 import { SecurityService } from './security/security.service';
 import { BooksComponent } from './books/books.component';
-import { BooksService } from './books/books.service';
 import { BookNewComponent } from './books/book-new.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AuthorsComponent } from './authors/authors.component';
@@ -43,7 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     FlexLayoutModule,
     HttpClientModule
   ],
-  providers: [SecurityService, BooksService, {provide: MAT_DATE_LOCALE, useValue: 'es-ES'}],
+  providers: [SecurityService, {provide: MAT_DATE_LOCALE, useValue: 'es-ES'}],
   bootstrap: [AppComponent],
   entryComponents: [BookNewComponent]
 })

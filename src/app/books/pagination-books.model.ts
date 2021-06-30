@@ -1,6 +1,6 @@
 import { Books } from "./books.model";
 
-export interface PaginationBook{
+export interface PaginationBooks{
   pageSize: number;
   page: number;
   sort: string;

@@ -9,13 +9,8 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AuthorsService{
   baseUrl = environment.baseUrl;
-  private authorLst : Author[] | undefined;
+  private authorsList : Author[] | undefined;
   // private authorsList: Author[] = [];
-  private authorsList: Author[] = [
-    {authorId:1, firstName:'Francisco', lastName: 'Arce', academicDegree: 'Software Ing.'},
-    {authorId:2, firstName:'Daniel', lastName: 'Chavarria', academicDegree: 'Anuglar'},
-    {authorId:3, firstName:'Francisco', lastName: 'Chavarria', academicDegree: 'Xamarin'}
-  ];
   private authorSubject = new Subject<Author[]>();
 
   constructor(private http: HttpClient){}
