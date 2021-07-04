@@ -21,7 +21,8 @@ export class RegisterComponent implements OnInit {
       firstName: form.value.firstName,
       lastName: form.value.lastName,
       userName: form.value.userName,
-      userId: ''
+      userId: '',
+      token: ''
     });
   }
 }

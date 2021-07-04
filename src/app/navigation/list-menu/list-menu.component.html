@@ -2,6 +2,12 @@
     <a mat-list-item routerLink="/" (click)="onCloseMenu()" *ngIf="userStatus">
         <mat-icon>home</mat-icon><span class="nav-list-label">Home</span>
     </a>
+    <a mat-list-item routerLink="/authors" (click)="onCloseMenu()" *ngIf="userStatus">
+        <mat-icon>people</mat-icon><span class="nav-list-label">Authors</span>
+    </a>
+    <a mat-list-item routerLink="/books" (click)="onCloseMenu()" *ngIf="userStatus">
+        <mat-icon>library_books</mat-icon><span class="nav-list-label">Books</span>
+    </a>
     <a mat-list-item routerLink="/register" (click)="onCloseMenu()" *ngIf="!userStatus">
         <mat-icon>how_to_reg</mat-icon><span class="nav-list-label">Register</span>
     </a>
